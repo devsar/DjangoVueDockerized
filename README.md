@@ -1,3 +1,75 @@
+
+# English
+
+# Django + Vue.js Project
+
+##### This project consists of two POCs that have became two ready-to-use archetypes combining Django as backend with a RESTful API with Vue as frontend with full CRUD operations examples. It's also dockerized meaning the set up both for testing or production are very easy and should run in every machine no matter the system or specs. It cames in two flavors: one aimed for local testing and developing which uses both Django's and Vue's developer servers with hot reload ability; the other using Gunicorn, Nginx and Postgres aimed for production.
+***
+
+## Local Testing
+#### This version consist on two Docker images (one for frontend y the other for backend) with a bind mount that connects the container with the local folder containing the code.
+
+
+### Instructions
+
+#### Prerequisites
+Python >=  3.6
+
+Node >= 10
+
+NPM >= 6
+
+Docker CE >= 19
+
+
+
+#### Clone repo
+Clone the repo in the folder we want to work 
+
+### Start server using docker compose
+This option allow us to build and run two containers sepparately with only one command.  
+```Docker
+docker-compose up
+```
+
+That's it. We should have both enviroments up.
+
+
+
+### Build each image separately and run each container:
+
+#### Build Docker images:
+
+```Docker
+docker image build -t frontvue . -f front.Dockerfile
+docker image build -t backdjango . -f back.Dockerfile
+```
+
+#### Run Docker containers:
+```Docker
+docker container run -d -p 80:8000 -v $(pwd):/home/project/ backdjango
+docker container run -d -p 8080:8080 -v $(pwd):/home/project/ frontvue
+```
+
+
+
+#### Ready
+You can now visit localhost (or localhots:<port number> if we have specified another port)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Spanish
+
 # Proyecto Django + Vue.js
 
 ##### Este proyecto es una prueba de concepto pero también un arquetipo listo para utilizarse, del stack Django como Backend (en este caso por defecto utiliza la versión 2.1.11 pero puede ser modificado)  Vue.js como frontend (en este caso utiliza la versión 2.6.6 pero también puede ser modificado).
